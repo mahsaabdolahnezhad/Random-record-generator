@@ -1,0 +1,10 @@
+body{
+    font-family: arial, sans-serif;
+}
+.container{
+    border: 1px solid #dadde1;
+  padding: 220px;
+  margin: 40px auto;
+  border-radius: 10px;
+  max-width: 800px;
+}
