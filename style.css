@@ -11,24 +11,64 @@ body{
     border-radius: 10px;
     max-width: 600px;
   align-content: start;
+  background: radial-gradient(859px at 10% 20%, rgb(245, 220, 154) 0%, rgb(164, 78, 51) 90%);
 }
 .h3{
     grid-area: 1 / 1 / 1 / 1 ;
     border: 1px solid black;
+    background: #d0baa8; 
 }
-.generate-btn{
-    grid-area: 2 / 2 / 2 / 1;
-     border: 1px solid black;
+
+
+
+.button-74 {
+     grid-area: 2 / 2 / 2 / 1;
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: #fff;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 100px) {
+  .button-74 {
+    min-width: 50px;
+    padding: 0 25px;
+  }
+}
      
-}
+
+
 .description {
     grid-area: 1 / 2  / 1 / 7;
      border: 1px solid black;
+     background: #DDB27B;
      
 }
 .content{
     grid-area: 2 / 2 /6 / 5 ;
      border: 1px solid black;
+     background: #d0baa8; 
 } 
 .constraint {
     grid-area: 2 / 5 / 6 / 7;
