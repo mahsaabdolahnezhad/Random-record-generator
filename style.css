@@ -31,8 +31,8 @@ body{
   cursor: pointer;
   display: inline-block;
   font-weight: 600;
-  font-size: 18px;
-  padding: 0 18px;
+  font-size: 15px;
+  padding: auto 20px;
   line-height: 50px;
   text-align: center;
   text-decoration: none;
@@ -50,43 +50,58 @@ body{
   transform: translate(2px, 2px);
 }
 
-@media (min-width: 100px) {
+@media (min-width: 30px) {
   .button-74 {
-    min-width: 50px;
-    padding: 0 25px;
+    min-width: 30px;
+    padding: 0 15x;
   }
 }
      
 
 
 .description {
-    grid-area: 1 / 2  / 1 / 7;
+    grid-area: 1/ 2  / 1 / 7;
      border: 1px solid black;
      background: #DDB27B;
+     margin-bottom: 60px;
      
 }
 .content{
     grid-area: 2 / 2 /6 / 5 ;
      border: 1px solid black;
-     background: #d0baa8; 
+     margin-bottom: 30px;
+     margin-top: 5px;
+     margin-right: 10px;
+     margin-left: 20px;
+     
 } 
 .constraint {
     grid-area: 2 / 5 / 6 / 7;
      border: 1px solid black;
+     margin-right: 5px;
+     margin-bottom: 70px;
+
 }
 .display-mode{
   grid-area: 5 / 5 / 6 / 7;
   border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 40px;
+  margin-bottom: 30px;
 }
 .history-panel {
     grid-area: 3 / 1 / 6 / 1;
      border: 1px solid black;
+     margin-top: 10px;
 }
 .time {
     grid-area: 6 / 1 / 6 / 1 ;
      border: 1px solid black;
+     margin-top: 45px;
 }
 .pagination {
     grid-area: 6 / 2 / 6 / 7;
      border: 1px solid black;
+     margin-top: 40px;
+     margin-left: 5px
 }
