@@ -98,6 +98,8 @@ body{
     grid-area: 6 / 1 / 6 / 1 ;
      border: 1px solid black;
      margin-top: 45px;
+     font-size: 15px;
+     font-weight: 400px;
 }
 .pagination {
     grid-area: 6 / 2 / 6 / 7;
