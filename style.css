@@ -9,7 +9,7 @@ body{
     padding: 10px;
     margin: 20px auto;
     border-radius: 10px;
-    max-width: 600px;
+    max-width: 620px;
   align-content: start;
   background: radial-gradient(859px at 10% 20%, rgb(245, 220, 154) 0%, rgb(164, 78, 51) 90%);
 }
@@ -61,9 +61,12 @@ body{
 
 .description {
     grid-area: 1/ 2  / 1 / 7;
+    padding: 10px;
      border: 1px solid black;
+     border-radius: 2px;
      background: #DDB27B;
      margin-bottom: 60px;
+     margin-left: 10px;
      
 }
 .content{
