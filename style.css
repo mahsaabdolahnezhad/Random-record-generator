@@ -3,13 +3,15 @@ body{
 }
 .container{
     display: grid;
-    grid-template-columns: repeat(6,100px);
-    grid-template-rows: repeat(6 , 100px);
+    overflow: auto;
+    grid-template-columns: repeat(8,1fr);
+    grid-template-rows: repeat(7, 1fr);
     border: 1px solid #dadde1;
-    padding: 10px;
-    margin: 20px auto;
+    padding: auto 100px;
+    margin: 5px auto;
     border-radius: 10px;
-    max-width: 620px;
+    max-width: 1500px;
+    max-height: 800px;
   align-content: start;
   background: radial-gradient(859px at 10% 20%, rgb(245, 220, 154) 0%, rgb(164, 78, 51) 90%);
 }
@@ -20,20 +22,22 @@ body{
 }
 
 
-
+.button-place{
+    grid-area: 2 / 1 / 2/ 1;
+}
 .button-74 {
-     grid-area: 2 / 2 / 2 / 1;
+   
   background-color: #fbeee0;
   border: 2px solid #422800;
-  border-radius: 30px;
+  border-radius: 40px;
   box-shadow: #422800 4px 4px 0 0;
   color: #422800;
   cursor: pointer;
   display: inline-block;
-  font-weight: 600;
-  font-size: 15px;
-  padding: auto 20px;
-  line-height: 50px;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 20px 40px;
+  line-height: 20px;
   text-align: center;
   text-decoration: none;
   user-select: none;
@@ -50,9 +54,9 @@ body{
   transform: translate(2px, 2px);
 }
 
-@media (min-width: 30px) {
+@media (min-width: 50px) {
   .button-74 {
-    min-width: 30px;
+    min-width: 50px;
     padding: 0 15x;
   }
 }
@@ -60,7 +64,7 @@ body{
 
 
 .description {
-    grid-area: 1/ 2  / 1 / 7;
+    grid-area: 1/ 2  / 1 / 9;
     padding: 10px;
      border: 1px solid black;
      border-radius: 2px;
@@ -70,43 +74,85 @@ body{
      
 }
 .content{
-    grid-area: 2 / 2 /6 / 5 ;
+    grid-area: 2 / 2 /7 / 7 ;
      border: 1px solid black;
-     margin-bottom: 30px;
-     margin-top: 5px;
+     margin-bottom: 10px;
      margin-right: 10px;
      margin-left: 20px;
      
+     
 } 
+/* CSS for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+/* Scrollable Container */
+#tableContainer {
+  max-height: 300px; /* Set a fixed max height to enable scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+#tableContainer {
+  max-height: 300px; /* Set a fixed max height to enable scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
 .constraint {
-    grid-area: 2 / 5 / 6 / 7;
+    grid-area: 2 / 7 / 7 / 9;
      border: 1px solid black;
      margin-right: 5px;
-     margin-bottom: 70px;
+     margin-bottom: 80px;
+     margin-left: 30px;
 
 }
 .display-mode{
-  grid-area: 5 / 5 / 6 / 7;
+  grid-area:  6/ 7/ 7 / 9;
   border: 1px solid black;
   border-radius: 10px;
   margin-top: 40px;
   margin-bottom: 30px;
 }
 .history-panel {
-    grid-area: 3 / 1 / 6 / 1;
+    grid-area: 3 / 1 / 7 / 1;
      border: 1px solid black;
      margin-top: 10px;
 }
 .time {
-    grid-area: 6 / 1 / 6 / 1 ;
+    grid-area: 7 / 1 / 7 / 1 ;
      border: 1px solid black;
      margin-top: 45px;
      font-size: 15px;
-     font-weight: 400px;
+     font-weight: bold;
+     padding-right: 60px;
+     text-align: left;
 }
+.time-box {
+  display: inline-block;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
 .pagination {
-    grid-area: 6 / 2 / 6 / 7;
+    grid-area: 7/ 2 / 9 / 9;
      border: 1px solid black;
      margin-top: 40px;
-     margin-left: 5px
+     margin-left: 10px
 }
