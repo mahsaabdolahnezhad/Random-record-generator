@@ -48,7 +48,7 @@ let tableData = [
     age: 30,
     email: "emily23greyson@gmail.com",
   },
-  { name: "David", lastmae: "Blue", age: 35, email: "davidblue@email.com" },
+  { name: "David", lastname: "Blue", age: 35, email: "davidblue@email.com" },
 ];
 
 function generateTable(data) {
@@ -83,3 +83,70 @@ function generateTable(data) {
 let tableContainer = document.getElementById("tableContainer");
 let table = generateTable(tableData);
 tableContainer.appendChild(table);
+
+//creating toggle 
+ function toggleList(listNumber) {
+   const list = document.getElementById(`list${listNumber}`);
+   list.parentElement.classList.toggle("active");
+ }
+
+
+
+ //range slider
+const sliderIds = ["slider1", "slider2", "slider3"];
+const leftSliderIds = ["leftSlider1", "leftSlider2", "leftSlider3"];
+const rightSliderIds = ["rightSlider1", "rightSlider2", "rightSlider3"];
+const outputLeftClasses = ["outputLeft1", "outputLeft2", "outputLeft3"];
+const outputRightClasses = ["outputRight1", "outputRight2", "outputRight3"];
+
+function updateView(index) {
+  const leftSlider = document.getElementById(leftSliderIds[index]);
+  const rightSlider = document.getElementById(rightSliderIds[index]);
+  const outputLeft = document.querySelector(`.${outputLeftClasses[index]}`);
+  const outputRight = document.querySelector(`.${outputRightClasses[index]}`);
+
+  outputLeft.innerHTML = leftSlider.value;
+  outputLeft.style.left =
+    ((leftSlider.value - leftSlider.min) / (leftSlider.max - leftSlider.min)) *
+      100 +
+    "%";
+  outputRight.innerHTML = rightSlider.value;
+  outputRight.style.left =
+    ((rightSlider.value - rightSlider.min) /
+      (rightSlider.max - rightSlider.min)) *
+      100 +
+    "%";
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  sliderIds.forEach((sliderId, index) => {
+    const sliderContainer = document.getElementById(sliderId);
+    const leftSlider = sliderContainer.querySelector(
+      `#${leftSliderIds[index]}`
+    );
+    const rightSlider = sliderContainer.querySelector(
+      `#${rightSliderIds[index]}`
+    );
+
+    updateView(index);
+
+    [leftSlider, rightSlider].forEach((slider) => {
+      slider.addEventListener("mouseup", function () {
+        this.blur();
+      });
+      slider.addEventListener("mousedown", function () {
+        updateView(index);
+      });
+      slider.addEventListener("input", function () {
+        updateView(index);
+      });
+    });
+  });
+});
+
+
+
+
+
+
+

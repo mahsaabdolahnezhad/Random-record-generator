@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Record Generator</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href=".\style.css" />
 </head>
 <body>
-    <div class="container">
+    <div class="contain">
         <h3> Random Record Generator</h3>
         
        <div class="button-place">
@@ -21,8 +22,105 @@
         <div class="content" id="tableContainer">
         </div>
         <div class="constraint">
-            constraint form
-        </div>
+      <div class="toggle-list">
+  <span class="toggle-symbol" onclick="toggleList(1)"></span>
+  <h5 onclick="toggleList(1)">first name</h5>
+
+
+  <ul class="toggle-items" id="list1">
+    <ul class="checkbox-list">
+        
+    <li>
+<div class="range-slider" id="slider1">
+  <input type="range" min="0" max="100" value="20" id="leftSlider1">
+  <input type="range" min="0" max="100" value="80" id="rightSlider1">
+  <span class="output outputLeft1">20</span>
+  <span class="output outputRight1">80</span>
+</div>
+
+    </li>
+  
+      <li>
+        <input type="checkbox" id="smallLetters1" />
+        <label for="smallLetters1">Small letters</label>
+      </li>
+      <li>
+        <input type="checkbox" id="bigLetters1" />
+        <label for="bigLetters1">Big letters</label>
+      </li>
+    </ul>
+  </ul>
+</div>
+
+<div class="toggle-list">
+  <span class="toggle-symbol" onclick="toggleList(2)"></span>
+  <h5 onclick="toggleList(2)">last name</h5>
+  
+
+  <ul class="toggle-items" id="list2">
+    <ul class="checkbox-list">
+      <li>
+
+<div class="range-slider" id="slider2">
+  <input type="range" min="0" max="100" value="30" id="leftSlider2">
+  <input type="range" min="0" max="100" value="70" id="rightSlider2">
+  <span class="output outputLeft2">30</span>
+  <span class="output outputRight2">70</span>
+</div>
+
+      </li>
+     
+      <li>
+        <input type="checkbox" id="smallLetters2" />
+        <label for="smallLetters2">Small letters</label>
+      </li>
+      <li>
+        <input type="checkbox" id="bigLetters2" />
+        <label for="bigLetters2">Big letters</label>
+      </li>
+    </ul>
+  </ul>
+</div>
+
+<div class="toggle-list">
+   
+
+  <span class="toggle-symbol" onclick="toggleList(3)"></span>
+  <h5 onclick="toggleList(3)">email</h5>
+ 
+  <ul class="toggle-items" id="list3">
+    <ul class="checkbox-list">
+<li>
+<div class="range-slider" id="slider3">
+  <input type="range" min="0" max="100" value="40" id="leftSlider3">
+  <input type="range" min="0" max="100" value="60" id="rightSlider3">
+  <span class="output outputLeft3">40</span>
+  <span class="output outputRight3">60</span>
+</div>
+</li>
+      <li>
+        <input type="checkbox" id="smallLetters3" />
+        <label for="smallLetters3">Small letters</label>
+      </li>
+      <li>
+        <input type="checkbox" id="bigLetters3" />
+        <label for="bigLetters3">Big letters</label>
+      </li>
+      <li>
+        <input type="checkbox" id="symbols3" />
+        <label for="symbols3">Symbols</label>
+      </li>
+       <li>
+        <input type="checkbox" id="numbers" />
+        <label for="numbers">Numbers</label>
+      </li>
+    </ul>
+  </ul>
+</div>
+
+
+</div>
+
      <div class="history-panel">
         history panel
      </div>
@@ -30,13 +128,22 @@
         display mode 
      </div>
      <div class="time">
-      
-
+      time
      </div>
      <div class="pagination">
-        pigmentation panel
-     </div>
+       <div class="select">
+      <select name="format" id="format">
+        <option selected disabled>table rows on every page </option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+      </select>
 
+       </div>
+     </div>
+</div>
 
 
 
@@ -58,6 +165,7 @@
 
 
     </div>
+  
       <script src=".\script.js"></script>
 </body>
 </html>

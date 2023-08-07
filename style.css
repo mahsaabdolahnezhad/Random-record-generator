@@ -1,32 +1,38 @@
-body{
-    font-family: arial, sans-serif;
+body {
+  font-family: arial, sans-serif;
 }
-.container{
-    display: grid;
-    overflow: auto;
-    grid-template-columns: repeat(8,1fr);
-    grid-template-rows: repeat(7, 1fr);
-    border: 1px solid #dadde1;
-    padding: auto 100px;
-    margin: 5px auto;
-    border-radius: 10px;
-    max-width: 1500px;
-    max-height: 800px;
+
+.contain {
+  display: grid;
+  overflow: auto;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  border: 1px solid #dadde1;
+  padding: auto 100px;
+  margin: 5px auto;
+  border-radius: 10px;
+  max-width: 1600px;
+  max-height: 800px;
   align-content: start;
-  background: radial-gradient(859px at 10% 20%, rgb(245, 220, 154) 0%, rgb(164, 78, 51) 90%);
-}
-.h3{
-    grid-area: 1 / 1 / 1 / 1 ;
-    border: 1px solid black;
-    background: #d0baa8; 
+  background: radial-gradient(
+    859px at 10% 20%,
+    rgb(245, 220, 154) 0%,
+    rgb(164, 78, 51) 90%
+  );
 }
 
-
-.button-place{
-    grid-area: 2 / 1 / 2/ 1;
+.h3 {
+  grid-area: 1 / 1 / 1 / 1;
+  border: 1px solid black;
+  background: #d0baa8;
+  margin-left: 10px;
 }
+
+.button-place {
+  grid-area: 2 / 1 / 2 / 1;
+}
+
 .button-74 {
-   
   background-color: #fbeee0;
   border: 2px solid #422800;
   border-radius: 40px;
@@ -60,28 +66,25 @@ body{
     padding: 0 15x;
   }
 }
-     
-
 
 .description {
-    grid-area: 1/ 2  / 1 / 9;
-    padding: 10px;
-     border: 1px solid black;
-     border-radius: 2px;
-     background: #DDB27B;
-     margin-bottom: 60px;
-     margin-left: 10px;
-     
+  grid-area: 1 / 2 / 1 / 9;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 2px;
+  background: #ddb27b;
+  margin-bottom: 50px;
+  margin-left: 10px;
 }
-.content{
-    grid-area: 2 / 2 /7 / 7 ;
-     border: 1px solid black;
-     margin-bottom: 10px;
-     margin-right: 10px;
-     margin-left: 20px;
-     
-     
-} 
+
+.content {
+  grid-area: 2 / 2 / 7 / 7;
+  border: 1px solid black;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
 /* CSS for the table */
 table {
   width: 100%;
@@ -105,6 +108,7 @@ table th {
   max-height: 300px; /* Set a fixed max height to enable scrolling */
   overflow-y: auto; /* Enable vertical scrolling */
 }
+
 #tableContainer {
   max-height: 300px; /* Set a fixed max height to enable scrolling */
   overflow-y: auto; /* Enable vertical scrolling */
@@ -115,20 +119,190 @@ table th {
 }
 
 .constraint {
-    grid-area: 2 / 7 / 7 / 9;
-     border: 1px solid black;
-     margin-right: 5px;
-     margin-bottom: 80px;
-     margin-left: 30px;
+  grid-area: 2 / 7 / 8 / 9;
+  border: 1px solid black;
+  margin-right: 5px;
+  margin-bottom: 80px;
+  margin-left: 30px;
+}
 
+/* 2 handler range slider */
+   .range-slider {
+      position: relative;
+      width: 200px;
+      height: 30px;
+      background-color: #f5e1da;
+      border-radius: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      margin: 20px;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: calc(100% - 30px);
+      height: 5px;
+      background: #c5986a;
+      outline: none;
+      border-radius: 10px;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      background: #c5986a;
+      border-radius: 50%;
+      border: 2px solid #d8c3b5;
+      cursor: pointer;
+      transition: background 0.3s;
+      position: relative;
+      z-index: 2;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 15px;
+      height: 15px;
+      background: #c5986a;
+      border-radius: 50%;
+      border: 2px solid #d8c3b5;
+      cursor: pointer;
+      transition: background 0.3s;
+      position: relative;
+      z-index: 2;
+    }
+
+    .output {
+      position: absolute;
+      font-size: 10px;
+      color: #c5986a;
+    }
+
+    .output.outputLeft1 {
+      left: 0;
+    }
+
+    .output.outputRight1 {
+      right: 0;
+    }
+      .output.outputLeft2 {
+      left: 5%;
+    }
+
+    .output.outputRight2 {
+      right: 5%;
+    }
+      .output.outputLeft3 {
+      left: 5%;
+    }
+
+    .output.outputRight3 {
+      right: 5%;
+    }
+/*toggle list */
+
+.toggle-list {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.toggle-list h5 {
+  margin: 0; /* Remove default margin to avoid space around h5 */
+}
+.toggle-symbol {
+  margin-right: 5px; /* Add space between symbol and h5 */
+}
+
+.toggle-list.active .toggle-symbol::after {
+  content: "▾";
+}
+
+.toggle-list:not(.active) .toggle-symbol::before {
+  content: "▸";
+}
+
+
+
+
+.toggle-items {
+  display: none;
+  list-style: none;
+  padding-left: 20px;
+  margin-top: 2px;
+}
+
+.toggle-list.active .toggle-items {
+  display: block;
+}
+.checkbox-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+.checkbox-list li {
+  margin-bottom: 10px;
+}
+
+.checkbox-list input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-list label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+.checkbox-list label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+}
+
+.checkbox-list input[type="checkbox"]:checked + label:before {
+  background-color: #2196F3;
+  border-color: #2196F3;
+}
+
+.checkbox-list label:after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  display: none;
+}
+
+.checkbox-list input[type="checkbox"]:checked + label:after {
+  display: block;
 }
 .display-mode{
-  grid-area:  6/ 7/ 7 / 9;
+  grid-area:  7/ 7/ 8/ 9;
   border: 1px solid black;
   border-radius: 10px;
-  margin-top: 40px;
+  margin-top: 30px;
   margin-bottom: 30px;
+  margin-left: 5px;
 }
+
+
+
 .history-panel {
     grid-area: 3 / 1 / 7 / 1;
      border: 1px solid black;
@@ -151,8 +325,8 @@ table th {
 }
 
 .pagination {
-    grid-area: 7/ 2 / 9 / 9;
+    grid-area: 7/ 2 / 7 / 7;
      border: 1px solid black;
-     margin-top: 40px;
+     margin-top: 30px;
      margin-left: 10px
 }
