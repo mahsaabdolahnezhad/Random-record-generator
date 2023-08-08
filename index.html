@@ -32,6 +32,7 @@
         
     <li>
 <div class="range-slider" id="slider1">
+  <div class="slider-track"></div>
   <input type="range" min="0" max="100" value="20" id="leftSlider1">
   <input type="range" min="0" max="100" value="80" id="rightSlider1">
   <span class="output outputLeft1">20</span>
@@ -62,6 +63,7 @@
       <li>
 
 <div class="range-slider" id="slider2">
+  <div class="slider-track"></div>
   <input type="range" min="0" max="100" value="30" id="leftSlider2">
   <input type="range" min="0" max="100" value="70" id="rightSlider2">
   <span class="output outputLeft2">30</span>
@@ -92,6 +94,7 @@
     <ul class="checkbox-list">
 <li>
 <div class="range-slider" id="slider3">
+  <div class="slider-track"></div>
   <input type="range" min="0" max="100" value="40" id="leftSlider3">
   <input type="range" min="0" max="100" value="60" id="rightSlider3">
   <span class="output outputLeft3">40</span>
@@ -130,20 +133,27 @@
      <div class="time">
       time
      </div>
-     <div class="pagination">
-       <div class="select">
-      <select name="format" id="format">
-        <option selected disabled>table rows on every page </option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-        <option value="200">200</option>
-      </select>
-
-       </div>
-     </div>
+     <div id="paginationContainer">
+     <div class="pagination-controls">
+    <span id="prevPage" class="page-link">Previous</span>
+    <div id="pagination" class="pagination-links"></div>
+    <span id="nextPage" class="page-link">Next</span>
+  </div>
+      <div class="select">
+  <select id="rowsPerPage" >
+<option selected disabled>table rows on every page </option>
+    <option value="10" >10</option>
+    <option value="20">20</option>
+       <option value="50">50</option>
+          <option value="100">100</option>
+             <option value="200">200</option>
+  </select>
 </div>
+       <ul>
+        
+       </ul>
+     </div>
+
 
 
 
