@@ -3,23 +3,27 @@ body {
 }
 
 .contain {
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Viewport width */
+  height: 100vh; /* Viewport height */
   display: grid;
   overflow: auto;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(7, 1fr);
   border: 1px solid #dadde1;
   padding: auto 100px;
-  margin: 5px auto;
-  border-radius: 10px;
-  max-width: 1500px;
-  max-height: 800px;
-  align-content: start;
+  margin: 0; /* Remove margin */
+  border-radius: 0; /* Remove border-radius */
   background: radial-gradient(
     859px at 10% 20%,
     rgb(245, 220, 154) 0%,
     rgb(164, 78, 51) 90%
   );
 }
+
 
 .h3 {
   grid-area: 1 / 1 / 1 / 1;
@@ -68,10 +72,10 @@ body {
 }
 
 .description {
-  grid-area: 1 / 2 / 1 / 9;
+  grid-area: 1 / 2 / 1 / 8;
   padding: 10px;
-  border: 1px solid black;
-  border-radius: 2px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
   background: #ddb27b;
   margin-bottom: 50px;
   margin-left: 10px;
@@ -79,7 +83,9 @@ body {
 
 .content {
   grid-area: 2 / 2 / 8 / 7;
-  border: 1px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  background: #ddb27b;
   margin-bottom: 5px;
   margin-right: 10px;
   margin-left: 20px;
@@ -120,10 +126,13 @@ table th {
 
 .constraint {
   grid-area: 2 / 7 / 8 / 9;
-  border: 1px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  background: #ddb27b;
   margin-right: 5px;
   margin-bottom: 80px;
   margin-left: 30px;
+  margin-right: 10px;
 }
 
 /* 2 handler range slider */
@@ -304,8 +313,8 @@ table th {
 }
 
 .checkbox-list input[type="checkbox"]:checked + label:before {
-  background-color: #2196F3;
-  border-color: #2196F3;
+  background-color: #422800;
+  border-color: #422800;
 }
 
 .checkbox-list label:after {
@@ -326,23 +335,30 @@ table th {
 }
 .display-mode{
   grid-area:  7/ 7/ 8/ 9;
-  border: 1px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  background: #ddb27b;
   border-radius: 10px;
-  margin-top: 30px;
+  margin-top: 40px;
   margin-bottom: 30px;
   margin-left: 5px;
+  margin-right: 10px;
 }
 
 
 
 .history-panel {
     grid-area: 3 / 1 / 7 / 1;
-     border: 1px solid black;
+    background: #ddb27b;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
      margin-top: 10px;
 }
 .time {
     grid-area: 7 / 1 / 7 / 1 ;
-     border: 1px solid black;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+     background: #ddb27b;
      margin-top: 45px;
      font-size: 15px;
      font-weight: bold;
@@ -354,13 +370,17 @@ table th {
   padding: 5px;
   border: 2px solid black;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 #paginationContainer {
     grid-area: 7/ 2 / 7 / 7;
-     border: 1px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+     background: #ddb27b;
      margin-top: 30px;
-     margin-left: 10px
+     margin-left: 10px;
+     margin-bottom: 10px;
 }
 
 /*select */
@@ -380,6 +400,7 @@ select {
   cursor: pointer;
   font-size: 0.9em; /* Slightly smaller font size */
   font-family: 'Open Sans', sans-serif;
+
 }
 
 select::-ms-expand {
@@ -387,13 +408,15 @@ select::-ms-expand {
 }
 
 .select {
-  position: relative;
+  position: fixed;
   display: flex;
   width: 14em; /* Smaller width */
   height: 2.5em; /* Smaller height */
   line-height: 2.5;
   background: #3E2723; /* Brown background color */
   overflow: hidden;
+  right: 400px;
+   transform: translateY(-10%);
   border-radius: .2em; /* Smaller border radius */
 }
 
