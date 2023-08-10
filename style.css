@@ -349,10 +349,13 @@ table th {
 
 .history-panel {
     grid-area: 3 / 1 / 7 / 1;
+    color: gray;
     background: #ddb27b;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
      margin-top: 10px;
+      height: 300px; /* Adjust the height as needed */
+  overflow-y: auto;
 }
 .time {
     grid-area: 7 / 1 / 7 / 1 ;

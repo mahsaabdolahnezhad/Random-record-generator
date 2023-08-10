@@ -27,12 +27,9 @@ function formatMinutes(minutes) {
 updateTime();
 setInterval(updateTime, 1000);
 
-// counting rows
-let n;
-//measring time
-let time;
+
 let description = document.querySelector("#description");
-description.innerHTML = `created ${n} records at ${time}`;
+
 
 
 //creating toggle 
@@ -105,127 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //creating tables
 let tableData = [
-  {
-    name: "John",
-    lastname: "Brent",
-    age: 25,
-    email: "john1666brent@gmail.com",
-  },
-  {
-    name: "Emily",
-    lastname: "Greyson",
-    age: 30,
-    email: "emily23greyson@gmail.com",
-  },
-  { name: "David", lastname: "Blue", age: 35, email: "davidblue@email.com" },
-  {
-    name: "Sarah",
-    lastname: "Smith",
-    age: 28,
-    email: "sarah.smith@example.com",
-  },
-  {
-    name: "Michael",
-    lastname: "Johnson",
-    age: 40,
-    email: "michaelj@example.com",
-  },
-  {
-    name: "Sophia",
-    lastname: "Williams",
-    age: 22,
-    email: "sophia.w@example.com",
-  },
-  {
-    name: "Matthew",
-    lastname: "Anderson",
-    age: 31,
-    email: "matthew.anderson@example.com",
-  },
-  {
-    name: "Olivia",
-    lastname: "Davis",
-    age: 27,
-    email: "olivia.d@example.com",
-  },
-  {
-    name: "Daniel",
-    lastname: "Wilson",
-    age: 29,
-    email: "daniel.w@example.com",
-  },
-  {
-    name: "Ava",
-    lastname: "Miller",
-    age: 33,
-    email: "ava.miller@example.com",
-  },
-  {
-    name: "William",
-    lastname: "Thompson",
-    age: 36,
-    email: "william.t@example.com",
-  },
-  {
-    name: "Isabella",
-    lastname: "Martinez",
-    age: 26,
-    email: "isabella.m@example.com",
-  },
-  {
-    name: "James",
-    lastname: "Garcia",
-    age: 45,
-    email: "james.g@example.com",
-  },
-  {
-    name: "Emma",
-    lastname: "Rodriguez",
-    age: 32,
-    email: "emma.r@example.com",
-  },
-  {
-    name: "Benjamin",
-    lastname: "Lopez",
-    age: 38,
-    email: "benjamin.l@example.com",
-  },
-  {
-    name: "Mia",
-    lastname: "Lee",
-    age: 23,
-    email: "mia.l@example.com",
-  },
-  {
-    name: "Alexander",
-    lastname: "Harris",
-    age: 39,
-    email: "alexander.h@example.com",
-  },
-  {
-    name: "Ella",
-    lastname: "Clark",
-    age: 29,
-    email: "ella.c@example.com",
-  },
-  {
-    name: "Jacob",
-    lastname: "Lewis",
-    age: 34,
-    email: "jacob.l@example.com",
-  },
-  {
-    name: "Liam",
-    lastname: "Young",
-    age: 27,
-    email: "liam.y@example.com",
-  },
-  {
-    name: "Grace",
-    lastname: "Hall",
-    age: 31,
-    email: "grace.h@example.com",
-  },
+
 ];
 
 
@@ -261,9 +138,6 @@ function generateTable(data) {
 
 
 
-const tableContainer = document.getElementById("tableContainer");
-let table = generateTable(tableData);
-tableContainer.appendChild(table);
 
 const itemsPerPageSelect = document.getElementById("rowsPerPage");
 const paginationContainer = document.getElementById("pagination");
@@ -336,10 +210,7 @@ nextPageButton.addEventListener("click", () => {
   }
 });
 
-// Initial rendering
-updateTable();
-updatePagination();
-updatePageButtons();
+
 
 
 
@@ -362,3 +233,168 @@ function updatePageButtons() {
     paginationControls.style.display = "flex";
   }
 }
+
+
+//creating random records
+//email
+const includeBigLetters3 = document.getElementById("bigLetters3");
+const includeSmallLetters3 = document.getElementById("smallLetters3");
+const includeNumbers3 = document.getElementById("numbers");
+const includeSymbols3 = document.getElementById("symbols3");
+const minLengthInput3 = document.getElementById("leftSlider3");
+const maxLengthInput3 = document.getElementById("rightSlider3");
+//name
+const includeBigLetters1 = document.getElementById("bigLetters1");
+const includeSmallLetters1 = document.getElementById("smallLetters1");
+const minLengthInput1 = document.getElementById("leftSlider1");
+const maxLengthInput1 = document.getElementById("rightSlider1");
+
+//last name 
+const includeBigLetters2 = document.getElementById("bigLetters2");
+const includeSmallLetters2 = document.getElementById("smallLetters2");
+const minLengthInput2 = document.getElementById("leftSlider2");
+const maxLengthInput2 = document.getElementById("rightSlider2");
+
+const historyPanel = document.querySelector(".history-panel");
+const generateButton = document.getElementById("generate");
+
+
+generateButton.addEventListener("click", () => {
+  const startTime = new Date();
+  const minLength = parseInt(minLengthInput1.value);
+  const maxLength = parseInt(maxLengthInput1.value);
+  const minLength2 = parseInt(minLengthInput2.value);
+  const maxLength2 = parseInt(maxLengthInput2.value);
+  const minLength3 = parseInt(minLengthInput3.value);
+  const maxLength3 = parseInt(maxLengthInput3.value);
+  console.log("Generate button clicked!");
+
+  if (isNaN(minLength) || isNaN(maxLength) || minLength > maxLength) {
+    alert("Invalid input. Please provide valid minimum and maximum lengths.");
+    return;
+  }
+    if (isNaN(minLength2) || isNaN(maxLength2) || minLength2 > maxLength2) {
+      alert("Invalid input. Please provide valid minimum and maximum lengths.");
+      return;
+    }
+
+      if (isNaN(minLength3) || isNaN(maxLength3) || minLength3 > maxLength3) {
+        alert(
+          "Invalid input. Please provide valid minimum and maximum lengths."
+        );
+        return;
+      }
+
+
+  const characterSets = {
+    bigLetters: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    smallLetters: "abcdefghijklmnopqrstuvwxyz",
+    numbers: "0123456789",
+    symbols: "!@#$%^&*",
+  };
+    const minRows = 500;
+    const maxRows = 10000;
+    const numRows =
+      Math.floor(Math.random() * (maxRows - minRows + 1)) + minRows;
+
+  let selectedCharacterSets3 = "";
+   let selectedCharacterSets2 = "";
+    let selectedCharacterSets= "";
+
+  if (includeBigLetters3.checked)
+    selectedCharacterSets3 += characterSets.bigLetters;
+  if (includeSmallLetters3.checked)
+    selectedCharacterSets3 += characterSets.smallLetters;
+  if (includeNumbers3.checked) selectedCharacterSets3 += characterSets.numbers;
+  if (includeSymbols3.checked) selectedCharacterSets3 += characterSets.symbols;
+
+    if (includeBigLetters2.checked)
+      selectedCharacterSets2 += characterSets.bigLetters;
+    if (includeSmallLetters2.checked)
+      selectedCharacterSets2 += characterSets.smallLetters;
+
+        if (includeBigLetters1.checked)
+          selectedCharacterSets+= characterSets.bigLetters;
+        if (includeSmallLetters1.checked)
+          selectedCharacterSets+= characterSets.smallLetters;
+
+  let randomEmail = "";
+  const selectedCharacterSetLength3 = selectedCharacterSets3.length;
+
+
+  let randomName = "";
+  const selectedCharacterSetLength1 = selectedCharacterSets.length;
+
+  
+  let randomLastName = "";
+  const selectedCharacterSetLength2 = selectedCharacterSets2.length;
+
+ for (let j = 0; j < numRows; j++) {
+   const nameLength =
+     Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
+
+   for (let i = 0; i < nameLength; i++) {
+     const randomIndex = Math.floor(
+       Math.random() * selectedCharacterSetLength1
+     );
+     randomName += selectedCharacterSets[randomIndex];
+   }
+   const lastnameLength =
+     Math.floor(Math.random() * (maxLength2 - minLength2 + 1)) + minLength2;
+
+   for (let i = 0; i < lastnameLength; i++) {
+     const randomIndex2 = Math.floor(
+       Math.random() * selectedCharacterSetLength2
+     );
+     randomLastName += selectedCharacterSets2[randomIndex2];
+   }
+
+   const emailLength =
+     Math.floor(Math.random() * (maxLength3 - minLength3 + 1)) + minLength3;
+
+   for (let i = 0; i < emailLength; i++) {
+     const randomIndex3 = Math.floor(
+       Math.random() * selectedCharacterSetLength3
+     );
+     randomEmail += selectedCharacterSets3[randomIndex3];
+   }
+   //age
+   const min = 1;
+   const max = 100;
+   const randomAge = Math.floor(Math.random() * (max - min + 1)) + min;
+
+   // Add data to generatedData array
+   tableData.push({
+     name: randomName,
+     lastname: randomLastName,
+     age: randomAge,
+     email: randomEmail,
+   });
+ }
+
+
+ table = generateTable(tableData);
+tableContainer.innerHTML = "";
+tableContainer.appendChild(table);
+
+ updateTable();
+ updatePagination();
+ updatePageButtons();
+  const endTime = new Date(); // Record the end time
+  const timeTaken = endTime - startTime; 
+   const historyItem = document.createElement("div");
+   historyItem.className = "history-item";
+   historyItem.innerHTML = `
+    <p>Generated on ${formattedDate} at ${formattedTime}</p>
+    <p> ${numRows} records</p>
+  `;
+
+   // Append the history item to the history panel
+   historyPanel.appendChild(historyItem);
+});
+description.innerHTML = `created ${numRows} records at ${timeTaken}`;
+
+
+
+
+
