@@ -28,7 +28,6 @@ updateTime();
 setInterval(updateTime, 1000);
 
 
-let description = document.querySelector("#description");
 
 
 
@@ -49,10 +48,12 @@ const outputRightClasses = ["outputRight1", "outputRight2", "outputRight3"];
 
 
 function updateView(index) {
+   
   const leftSlider = document.getElementById(leftSliderIds[index]);
   const rightSlider = document.getElementById(rightSliderIds[index]);
   const outputLeft = document.querySelector(`.${outputLeftClasses[index]}`);
   const outputRight = document.querySelector(`.${outputRightClasses[index]}`);
+  
 
   outputLeft.innerHTML = leftSlider.value;
   outputLeft.style.left =
@@ -65,12 +66,22 @@ function updateView(index) {
       (rightSlider.max - rightSlider.min)) *
       100 +
     "%";
+
+    
      const minRange = Math.min(leftSlider.value, rightSlider.value);
   const maxRange = Math.max(leftSlider.value, rightSlider.value);
 
-  const track = leftSlider.nextElementSibling;
- track.style.background = `linear-gradient(to right, #c5986a ${minRange+7.5}%, #8a4b1f ${minRange+7.5}%, #8a4b1f ${maxRange}%, #c5986a ${maxRange}%)`;
+   const gradientMin =
+     ((minRange - leftSlider.min) / (leftSlider.max - leftSlider.min)) * 100;
+   const gradientMax =
+     ((maxRange - leftSlider.min) / (leftSlider.max - leftSlider.min)) * 100;
+
+   const track = leftSlider.nextElementSibling;
+   track.style.background = `linear-gradient(to right, #c5986a ${gradientMin+7.5}%, #8a4b1f ${gradientMin+7.5}%, #8a4b1f ${gradientMax}%, #c5986a ${gradientMax}%)`;
+
+   
 }
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -235,6 +246,8 @@ function updatePageButtons() {
 }
 
 
+
+
 //creating random records
 //email
 const includeBigLetters3 = document.getElementById("bigLetters3");
@@ -256,18 +269,25 @@ const minLengthInput2 = document.getElementById("leftSlider2");
 const maxLengthInput2 = document.getElementById("rightSlider2");
 
 const historyPanel = document.querySelector(".history-panel");
+
+let description = document.getElementById("description");
 const generateButton = document.getElementById("generate");
 
 
+
+
 generateButton.addEventListener("click", () => {
-  const startTime = new Date();
+  
   const minLength = parseInt(minLengthInput1.value);
   const maxLength = parseInt(maxLengthInput1.value);
   const minLength2 = parseInt(minLengthInput2.value);
   const maxLength2 = parseInt(maxLengthInput2.value);
   const minLength3 = parseInt(minLengthInput3.value);
   const maxLength3 = parseInt(maxLengthInput3.value);
-  console.log("Generate button clicked!");
+  const domainNames = ["example.com", "testmail.com", "randommail.org", "gmail.com", "email.com"];
+   tableContainer.innerHTML = "";
+   const startTime = new Date();
+
 
   if (isNaN(minLength) || isNaN(maxLength) || minLength > maxLength) {
     alert("Invalid input. Please provide valid minimum and maximum lengths.");
@@ -287,15 +307,15 @@ generateButton.addEventListener("click", () => {
 
 
   const characterSets = {
+
     bigLetters: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     smallLetters: "abcdefghijklmnopqrstuvwxyz",
     numbers: "0123456789",
     symbols: "!@#$%^&*",
   };
     const minRows = 500;
-    const maxRows = 10000;
-    const numRows =
-      Math.floor(Math.random() * (maxRows - minRows + 1)) + minRows;
+    const maxRows = 7000;
+    const numRows =Math.floor(Math.random() * (maxRows - minRows + 1)) + minRows;
 
   let selectedCharacterSets3 = "";
    let selectedCharacterSets2 = "";
@@ -318,18 +338,18 @@ generateButton.addEventListener("click", () => {
         if (includeSmallLetters1.checked)
           selectedCharacterSets+= characterSets.smallLetters;
 
-  let randomEmail = "";
   const selectedCharacterSetLength3 = selectedCharacterSets3.length;
 
 
-  let randomName = "";
   const selectedCharacterSetLength1 = selectedCharacterSets.length;
 
-  
-  let randomLastName = "";
+
   const selectedCharacterSetLength2 = selectedCharacterSets2.length;
 
  for (let j = 0; j < numRows; j++) {
+   let randomName = "";
+   let randomLastName = "";
+   let randomEmail = "";
    const nameLength =
      Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
 
@@ -358,10 +378,12 @@ generateButton.addEventListener("click", () => {
      );
      randomEmail += selectedCharacterSets3[randomIndex3];
    }
+     randomEmail += `@${domainNames[Math.floor(Math.random() * domainNames.length)]}`;
    //age
    const min = 1;
    const max = 100;
    const randomAge = Math.floor(Math.random() * (max - min + 1)) + min;
+
 
    // Add data to generatedData array
    tableData.push({
@@ -370,30 +392,40 @@ generateButton.addEventListener("click", () => {
      age: randomAge,
      email: randomEmail,
    });
- }
+    table = generateTable(tableData);
+    tableContainer.innerHTML = "";
+    tableContainer.appendChild(table);
 
+     const endTime = new Date();
+     const timeTaken = endTime - startTime;
+  const minutes = Math.floor(timeTaken / 60000); // 1 minute = 60,000 milliseconds
+  const seconds = ((timeTaken % 60000) / 1000).toFixed(0); // Remaining milliseconds divided by 1000 to get seconds
 
- table = generateTable(tableData);
-tableContainer.innerHTML = "";
-tableContainer.appendChild(table);
+  // Update description with the time taken
+  description.innerHTML = `created ${tableData.length} records in ${minutes}:${seconds} minutes`;
 
- updateTable();
- updatePagination();
- updatePageButtons();
-  const endTime = new Date(); // Record the end time
-  const timeTaken = endTime - startTime; 
-   const historyItem = document.createElement("div");
-   historyItem.className = "history-item";
-   historyItem.innerHTML = `
-    <p>Generated on ${formattedDate} at ${formattedTime}</p>
-    <p> ${numRows} records</p>
+     // Create and append history item
+     
+  }
+  const formattedDate = new Date().toLocaleDateString();
+  const formattedTime = new Date().toLocaleTimeString();
+  const historyItem = document.createElement("div");
+  historyItem.className = "history-item";
+  historyItem.innerHTML = `
+    <p>Generated ${tableData.length} records on ${formattedDate} at ${formattedTime}</p>
   `;
+  historyPanel.appendChild(historyItem);
 
-   // Append the history item to the history panel
-   historyPanel.appendChild(historyItem);
+    updateTable();
+    updatePagination();
+    updatePageButtons();
+ 
+   
+ 
+
+
+
 });
-description.innerHTML = `created ${numRows} records at ${timeTaken}`;
-
 
 
 
