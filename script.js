@@ -194,6 +194,15 @@ function updateTable() {
   tableContainer.innerHTML = "";
   tableContainer.appendChild(newTable);
 
+
+   // Attach click event listener to each row
+   let tableRows = newTable.querySelectorAll("tbody tr");
+   tableRows.forEach((row, index) => {
+     row.addEventListener("click", () => {
+       showRowDetails(pageData[index]); // Use pageData instead of tableData
+     });
+   });
+
 }
 
 function updatePagination() {
@@ -229,6 +238,19 @@ function updatePagination() {
   }
 
   paginationContainer.innerHTML = paginationHTML;
+  attachPageLinkListeners();
+  const pageLinks = document.querySelectorAll(".page-link");
+
+  pageLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      currentPage = parseInt(link.getAttribute("data-page"), 10);
+      updateTable();
+      updatePagination();
+    });
+  });
+  
+}
+function attachPageLinkListeners() {
   const pageLinks = document.querySelectorAll(".page-link");
 
   pageLinks.forEach((link) => {
@@ -239,7 +261,6 @@ function updatePagination() {
     });
   });
 }
-
 
 
 
@@ -443,6 +464,7 @@ generateButton.addEventListener("click", () => {
      age: randomAge,
      email: randomEmail,
    });
+   
    table = generateTable(tableData);
    tableContainer.innerHTML = "";
    tableContainer.appendChild(table);
