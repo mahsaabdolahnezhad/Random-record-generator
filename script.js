@@ -140,13 +140,35 @@ function generateTable(data) {
       td.textContent = value;
       tr.appendChild(td);
     });
+  
+    
     tbody.appendChild(tr);
+    
   });
   table.appendChild(tbody);
 
   return table;
 }
 
+const tableContainer = document.getElementById("tableContainer");
+function showRowDetails(rowData) {
+  let detailsContainer = document.createElement("div");
+  detailsContainer.classList.add("details-container");
+
+  let exitButton = document.createElement("button");
+  exitButton.textContent = "Exit";
+  exitButton.addEventListener("click", () => {
+    tableContainer.innerHTML = "";
+    tableContainer.appendChild(table);
+  });
+  detailsContainer.appendChild(exitButton);
+
+  let detailsTable = generateTable([rowData]);
+  detailsContainer.appendChild(detailsTable);
+
+  tableContainer.innerHTML = "";
+  tableContainer.appendChild(detailsContainer);
+}
 
 
 
@@ -171,7 +193,11 @@ function updateTable() {
   // Clear previous table and append the new one
   tableContainer.innerHTML = "";
   tableContainer.appendChild(newTable);
+
 }
+
+
+
 
 // Create and update pagination links
 function updatePagination() {
@@ -314,7 +340,7 @@ generateButton.addEventListener("click", () => {
     symbols: "!@#$%^&*",
   };
     const minRows = 500;
-    const maxRows = 7000;
+    const maxRows = 1000;
     const numRows =Math.floor(Math.random() * (maxRows - minRows + 1)) + minRows;
 
   let selectedCharacterSets3 = "";
@@ -378,12 +404,13 @@ generateButton.addEventListener("click", () => {
      );
      randomEmail += selectedCharacterSets3[randomIndex3];
    }
-     randomEmail += `@${domainNames[Math.floor(Math.random() * domainNames.length)]}`;
+   randomEmail += `@${
+     domainNames[Math.floor(Math.random() * domainNames.length)]
+   }`;
    //age
    const min = 1;
    const max = 100;
    const randomAge = Math.floor(Math.random() * (max - min + 1)) + min;
-
 
    // Add data to generatedData array
    tableData.push({
@@ -392,21 +419,27 @@ generateButton.addEventListener("click", () => {
      age: randomAge,
      email: randomEmail,
    });
-    table = generateTable(tableData);
-    tableContainer.innerHTML = "";
-    tableContainer.appendChild(table);
+   table = generateTable(tableData);
+   tableContainer.innerHTML = "";
+   tableContainer.appendChild(table);
+   // Attach click event listener to each row
+   let tableRows = table.querySelectorAll("tbody tr");
+   tableRows.forEach((row, index) => {
+     row.addEventListener("click", () => {
+       showRowDetails(tableData[index]);
+     });
+   });
 
-     const endTime = new Date();
-     const timeTaken = endTime - startTime;
-  const minutes = Math.floor(timeTaken / 60000); // 1 minute = 60,000 milliseconds
-  const seconds = ((timeTaken % 60000) / 1000).toFixed(0); // Remaining milliseconds divided by 1000 to get seconds
+   const endTime = new Date();
+   const timeTaken = endTime - startTime;
+   const minutes = Math.floor(timeTaken / 60000); // 1 minute = 60,000 milliseconds
+   const seconds = ((timeTaken % 60000) / 1000).toFixed(0); // Remaining milliseconds divided by 1000 to get seconds
 
-  // Update description with the time taken
-  description.innerHTML = `created ${tableData.length} records in ${minutes}:${seconds} minutes`;
+   // Update description with the time taken
+   description.innerHTML = `created ${tableData.length} records in ${minutes}:${seconds} minutes`;
 
-     // Create and append history item
-     
-  }
+   // Create and append history item
+ }
   const formattedDate = new Date().toLocaleDateString();
   const formattedTime = new Date().toLocaleTimeString();
   const historyItem = document.createElement("div");
@@ -419,10 +452,6 @@ generateButton.addEventListener("click", () => {
     updateTable();
     updatePagination();
     updatePageButtons();
- 
-   
- 
-
 
 
 });

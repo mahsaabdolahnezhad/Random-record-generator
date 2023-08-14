@@ -106,10 +106,14 @@ table td {
   border: 1px solid #ccc;
 }
 
-table th {
-  background-color: #f2f2f2;
-}
 
+table th {
+  background-color: burlywood;
+}
+ tr:hover {
+      background-color: #f0f0f0;
+      cursor: pointer;
+    }
 /* Scrollable Container */
 #tableContainer {
   max-height: 500px; /* Set a fixed max height to enable scrolling */
@@ -336,17 +340,6 @@ table th {
 .checkbox-list input[type="checkbox"]:checked + label:after {
   display: block;
 }
-.display-mode{
-  grid-area:  7/ 7/ 8/ 9;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  background: #ddb27b;
-  border-radius: 10px;
-  margin-top: 40px;
-  margin-bottom: 30px;
-  margin-left: 5px;
-  margin-right: 10px;
-}
 
 
 
@@ -474,12 +467,14 @@ select::-ms-expand {
 .pagination-controls {
   display: flex;
   align-items: center;
+  overflow-y:auto;
 }
 
 .pagination-links {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items:flex-start;
+  
 }
 
 .page-link {
