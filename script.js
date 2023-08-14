@@ -196,9 +196,6 @@ function updateTable() {
 
 }
 
-
-
-
 function updatePagination() {
   totalPages = Math.ceil(tableData.length / rowsPerPage);
   let paginationHTML = "";
@@ -242,6 +239,9 @@ function updatePagination() {
     });
   });
 }
+
+
+
 
 
 // Update rows per page and re-render table and pagination
