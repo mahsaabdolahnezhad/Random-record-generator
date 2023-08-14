@@ -199,13 +199,36 @@ function updateTable() {
 
 
 
-// Create and update pagination links
 function updatePagination() {
-   totalPages = Math.ceil(tableData.length / rowsPerPage);
+  totalPages = Math.ceil(tableData.length / rowsPerPage);
   let paginationHTML = "";
 
-  for (let i = 1; i <= totalPages; i++) {
-    paginationHTML += `<span class="page-link" data-page="${i}">${i}</span>`;
+  if (totalPages <= 7) {
+    for (let i = 1; i <= totalPages; i++) {
+      paginationHTML += `<span class="page-link" data-page="${i}">${i}</span>`;
+    }
+  } else {
+    if (currentPage <= 4) {
+      for (let i = 1; i <= 5; i++) {
+        paginationHTML += `<span class="page-link" data-page="${i}">${i}</span>`;
+      }
+      paginationHTML += `<span>...</span>`;
+      paginationHTML += `<span class="page-link" data-page="${totalPages}">${totalPages}</span>`;
+    } else if (currentPage > totalPages - 4) {
+      paginationHTML += `<span class="page-link" data-page="1">1</span>`;
+      paginationHTML += `<span>...</span>`;
+      for (let i = totalPages - 4; i <= totalPages; i++) {
+        paginationHTML += `<span class="page-link" data-page="${i}">${i}</span>`;
+      }
+    } else {
+      paginationHTML += `<span class="page-link" data-page="1">1</span>`;
+      paginationHTML += `<span>...</span>`;
+      for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+        paginationHTML += `<span class="page-link" data-page="${i}">${i}</span>`;
+      }
+      paginationHTML += `<span>...</span>`;
+      paginationHTML += `<span class="page-link" data-page="${totalPages}">${totalPages}</span>`;
+    }
   }
 
   paginationContainer.innerHTML = paginationHTML;
@@ -219,6 +242,7 @@ function updatePagination() {
     });
   });
 }
+
 
 // Update rows per page and re-render table and pagination
 itemsPerPageSelect.addEventListener("change", () => {
@@ -340,7 +364,7 @@ generateButton.addEventListener("click", () => {
     symbols: "!@#$%^&*",
   };
     const minRows = 500;
-    const maxRows = 1000;
+    const maxRows = 10000;
     const numRows =Math.floor(Math.random() * (maxRows - minRows + 1)) + minRows;
 
   let selectedCharacterSets3 = "";
