@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Define an empty array for table data
- const tableData = [];
+ let tableData = [];
 
 // Function to generate a table
 function generateTable(data) {
@@ -317,6 +317,7 @@ function updatePageButtons() {
 
 // Function to generate random records
 function generateRandomRecords() {
+    tableContainer.innerHTML = "";
   // Get the options for email, name, and last name
 const includeBigLetters3 = document.getElementById("bigLetters3");
 const includeSmallLetters3 = document.getElementById("smallLetters3");
@@ -345,6 +346,8 @@ const generateButton = document.getElementById("generate");
 
   // Add click event listener to the generate button
 generateButton.addEventListener("click", () => {
+    tableData = []; // Clear the tableData array before generating new records
+    tableContainer.innerHTML = ""; 
     // Get the minimum and maximum lengths for email, name, and last name
   const minLength = parseInt(minLengthInput1.value);
   const maxLength = parseInt(maxLengthInput1.value);
@@ -523,4 +526,5 @@ generateButton.addEventListener("click", () => {
 }
 
 // Call the function to generate random records
+
 generateRandomRecords();
